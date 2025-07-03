@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Package, AlertTriangle, Search, Plus, Calendar, TrendingDown } from 'lucide-react';
-import { useAuth } from '../../../contexts/AuthContext';
+
 
 export const DentalInventoryDashboard: React.FC = () => {
-  const { userProfile } = useAuth();
-  const [inventoryItems, setInventoryItems] = useState([]);
-  const [lowStockItems, setLowStockItems] = useState([]);
-  const [expiringItems, setExpiringItems] = useState([]);
+  const [inventoryItems, setInventoryItems] = useState<any[]>([]);
+  const [lowStockItems, setLowStockItems] = useState<any[]>([]);
+  const [expiringItems, setExpiringItems] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {

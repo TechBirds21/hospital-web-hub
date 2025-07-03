@@ -498,5 +498,35 @@ export const apiService = {
       console.error('Logout error:', error);
       localStorage.removeItem('authToken');
     }
+  },
+
+  // Resources page API
+  async getResources() {
+    try {
+      const response = await api.get('/resources');
+      return response.data;
+    } catch (error) {
+      console.warn('Backend not available, using fallback resources data');
+      return [
+        {
+          id: '1',
+          title: 'Healthcare AI Implementation Guide',
+          description: 'Comprehensive guide for implementing AI in healthcare operations',
+          type: 'Guide',
+          category: 'Implementation',
+          downloadUrl: '#',
+          previewUrl: '#'
+        },
+        {
+          id: '2',
+          title: 'Patient Management Best Practices',
+          description: 'Industry best practices for patient data management and care coordination',
+          type: 'Whitepaper',
+          category: 'Management',
+          downloadUrl: '#',
+          previewUrl: '#'
+        }
+      ];
+    }
   }
 };

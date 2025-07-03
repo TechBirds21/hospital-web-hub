@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Users, Clock, Plus, Search, Phone, Smile } from 'lucide-react';
-import { useAuth } from '../../../contexts/AuthContext';
+
 
 export const DentalReceptionDashboard: React.FC = () => {
-  const { userProfile } = useAuth();
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Users, Camera, Sparkles, FileText, TrendingUp } from 'lucide-react';
-import { useAuth } from '../../../contexts/AuthContext';
+import { Calendar, Users, Camera, Sparkles } from 'lucide-react';
+
 
 export const AestheticMainDashboard: React.FC = () => {
-  const { userProfile } = useAuth();
-  const [appointments, setAppointments] = useState([]);
-  const [treatments, setTreatments] = useState([]);
+  const [appointments, setAppointments] = useState<any[]>([]);
+  const [treatments, setTreatments] = useState<any[]>([]);
 
   useEffect(() => {
     fetchAestheticData();

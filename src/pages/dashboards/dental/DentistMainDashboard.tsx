@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Users, Clock, FileText, Mic, MicOff, Brain, Smile } from 'lucide-react';
-import { useAuth } from '../../../contexts/AuthContext';
-import { supabase } from '../../../lib/supabase';
+import { Calendar, Users, Clock, Mic, MicOff, Brain, Smile } from 'lucide-react';
 
 export const DentistMainDashboard: React.FC = () => {
-  const { userProfile } = useAuth();
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState<any[]>([]);
   const [todaysStats, setTodaysStats] = useState({
     totalAppointments: 0,
     completed: 0,
     pending: 0,
-    nextPatient: null
+    nextPatient: null as any
   });
   const [isRecording, setIsRecording] = useState(false);
 
@@ -21,7 +18,7 @@ export const DentistMainDashboard: React.FC = () => {
 
   const fetchTodaysAppointments = async () => {
     try {
-      const today = new Date().toISOString().split('T')[0];
+      
       
       // Mock data for dental appointments
       const mockAppointments = [

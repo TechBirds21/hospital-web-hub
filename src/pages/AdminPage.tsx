@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Mail, BarChart3, Settings, Eye, Trash2, Download } from 'lucide-react';
+import { Users, Mail, BarChart3, Eye, Trash2, Download } from 'lucide-react';
 import { apiService } from '../services/api';
 
 interface Contact {
