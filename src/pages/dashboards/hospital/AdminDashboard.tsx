@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Bed, Users, AlertTriangle, TrendingUp, Calendar } from 'lucide-react';
-import { useAuth } from '../../../contexts/AuthContext';
-import { supabase } from '../../../lib/supabase';
+
 
 export const AdminDashboard: React.FC = () => {
-  const { userProfile } = useAuth();
-  const [hospitalMetrics, setHospitalMetrics] = useState({
+  const [hospitalMetrics] = useState({
     totalBeds: 100,
     occupiedBeds: 78,
     totalPatients: 156,

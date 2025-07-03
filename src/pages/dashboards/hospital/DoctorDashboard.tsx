@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Users, Clock, FileText, Mic, MicOff, Brain, Activity } from 'lucide-react';
+import { Calendar, Users, Clock, Mic, MicOff, Brain, Activity } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../../lib/supabase';
 import { isLocalAuthEnabled } from '../../../utils/localAuth';
 
 export const DoctorDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState<any[]>([]);
   const [todaysStats, setTodaysStats] = useState({
     totalAppointments: 0,
     completed: 0,
     pending: 0,
-    nextPatient: null
+    nextPatient: null as any
   });
   const [isRecording, setIsRecording] = useState(false);
-  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
     fetchTodaysAppointments();

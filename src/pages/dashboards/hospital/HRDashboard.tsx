@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, UserPlus, Clock, Calendar, DollarSign, TrendingUp } from 'lucide-react';
+import { Users, UserPlus, Clock, DollarSign } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../../lib/supabase';
 import { isLocalAuthEnabled } from '../../../utils/localAuth';
 
 export const HRDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [staff, setStaff] = useState([]);
-  const [attendanceToday, setAttendanceToday] = useState([]);
+  const [staff, setStaff] = useState<any[]>([]);
 
   useEffect(() => {
     fetchStaffData();

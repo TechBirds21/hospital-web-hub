@@ -190,7 +190,7 @@ export const DentalInventoryDashboard: React.FC = () => {
                         <p className="text-xs text-yellow-500">Batch: {item.batch_number}</p>
                       </div>
                       <span className="bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        {Math.ceil((new Date(item.expiry_date) - new Date()) / (1000 * 60 * 60 * 24))} days
+                        {Math.ceil((new Date(item.expiry_date).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days
                       </span>
                     </div>
                   ))}

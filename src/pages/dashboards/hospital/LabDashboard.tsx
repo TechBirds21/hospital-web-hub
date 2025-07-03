@@ -6,7 +6,7 @@ import { supabase } from '../../../lib/supabase';
 
 export const LabDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [labTests, setLabTests] = useState([]);
+  const [labTests, setLabTests] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 

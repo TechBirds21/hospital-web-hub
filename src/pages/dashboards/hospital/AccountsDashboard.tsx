@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, TrendingDown, CreditCard, Receipt, Calendar } from 'lucide-react';
+import { DollarSign, TrendingUp, TrendingDown, CreditCard, Receipt } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../../lib/supabase';
 
 export const AccountsDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<any[]>([]);
   const [selectedPeriod, setSelectedPeriod] = useState('today');
 
   useEffect(() => {
