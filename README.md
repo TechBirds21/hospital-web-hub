@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
+# Hospverse - AI-Powered Healthcare Management Platform
 
-## Project info
+## 🏥 Overview
+From Reception to Recovery, We've Got You
 
-**URL**: https://lovable.dev/projects/2b0a2445-f425-40cb-9f44-906d6b78ce1e
+Hospverse is a comprehensive healthcare management platform built with AI-first architecture. It provides specialized solutions for hospitals, dental clinics, and aesthetic practices with intelligent automation, predictive analytics, and role-based access control.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+### Multi-Specialty Support
+- **Hospital Management**: Complete hospital operations with AI-powered patient flow optimization
+- **Dental Practice**: Smart dental clinic management with treatment recommendations
+- **Aesthetic Medicine**: Advanced skin analysis and treatment outcome prediction
 
-**Use Lovable**
+### AI-Powered Capabilities
+- Predictive patient admission forecasting
+- Intelligent appointment scheduling
+- Smart resource optimization
+- Automated clinical documentation
+- Computer vision for medical imaging
+- Treatment outcome prediction
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2b0a2445-f425-40cb-9f44-906d6b78ce1e) and start prompting.
+### Role-Based Dashboards
+- **Doctor Dashboard**: Patient queue, SOAP notes, lab results
+- **Reception Dashboard**: Appointment management, patient check-in
+- **Pharmacy Dashboard**: Inventory management, prescription processing
+- **Lab Dashboard**: Sample tracking, results management
+- **HR Dashboard**: Staff management, shift scheduling
+- **Accounts Dashboard**: Financial management, billing
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠 Tech Stack
 
-**Use your preferred IDE**
+### Frontend
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **React Router** for navigation
+- **Vite** for development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Backend
+- **FastAPI** (Python)
+- **Supabase** (PostgreSQL + Auth)
+- **JWT** authentication
+- **Row Level Security** (RLS)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Quick Start
 
-Follow these steps:
+### Demo Login
+Visit the login page and use one of the following demo accounts:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Admin**: admin@demo.com / demo123
+- **Doctor**: doctor@demo.com / demo123
+- **Reception**: reception@demo.com / demo123
+- **Patient**: patient@demo.com / demo123
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Development Setup
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Install dependencies:
+```bash
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. Start development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 📊 Database Schema
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Core Tables
+- `users` - User authentication and profiles
+- `clinics` - Healthcare facilities
+- `doctors` - Medical practitioners
+- `patients` - Patient information
+- `appointments` - Appointment scheduling
+- `pharmacy_items` - Medication inventory
+- `lab_tests` - Laboratory tests
+- `hr_staff` - Staff management
+- `accounts_tx` - Financial transactions
 
-**Use GitHub Codespaces**
+### Security
+- Row Level Security (RLS) enabled
+- Role-based access policies
+- Clinic-based data isolation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔗 API Endpoints
 
-## What technologies are used for this project?
+### Authentication
+- `POST /auth/login` - User login
+- `POST /auth/register` - User registration
+- `GET /auth/me` - Current user profile
 
-This project is built with:
+### Appointments
+- `GET /appointments` - List appointments
+- `POST /appointments` - Create appointment
+- `PATCH /appointments/{id}` - Update appointment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📱 Mobile Support
 
-## How can I deploy this project?
+- Progressive Web App (PWA)
+- Mobile-first responsive design
+- Touch-optimized interactions
 
-Simply open [Lovable](https://lovable.dev/projects/2b0a2445-f425-40cb-9f44-906d6b78ce1e) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+**Made with ❤️ in Hyderabad, India**
