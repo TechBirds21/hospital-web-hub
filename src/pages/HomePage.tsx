@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Users, Building2, Zap, Shield, Star, ChevronLeft, ChevronRight, TrendingUp, Globe, Award, Brain, Sparkles, Bot, Cpu } from 'lucide-react';
+import { ArrowRight, Play, Users, Building2, Star, ChevronLeft, ChevronRight, TrendingUp, Globe, Award, Brain, Sparkles, Bot, Cpu, Heart, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { apiService } from '../services/api';
+import heroBackground from '../assets/healthcare-hero-bg.jpg';
 
 interface Metrics {
   interestedPilotUsers: number;
@@ -188,28 +189,66 @@ export const HomePage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="pt-16 min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-teal-900">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-16 h-16 border-4 border-teal-500 border-t-transparent rounded-full"
-        />
+      <div className="pt-16 min-h-screen flex items-center justify-center bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: `url(${heroBackground})` }}></div>
+        <div className="relative z-10 text-center">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-20 h-20 border-4 border-primary border-t-transparent rounded-full mx-auto mb-8 shadow-glow"
+          />
+          <motion.h2
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-2xl font-bold text-white mb-4"
+          >
+            Loading Healthcare AI
+          </motion.h2>
+          <motion.div
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex justify-center space-x-2"
+          >
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+                className="w-3 h-3 bg-primary rounded-full"
+              />
+            ))}
+          </motion.div>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="pt-16 min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="text-center p-8">
-          <p className="text-red-600 mb-4">{error}</p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
+      <div className="pt-16 min-h-screen flex items-center justify-center bg-background">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center p-12 max-w-md mx-auto bg-surface rounded-3xl shadow-xl border border-border"
+        >
+          <motion.div
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 0.5, repeat: 3 }}
+            className="w-16 h-16 bg-error rounded-full mx-auto mb-6 flex items-center justify-center"
           >
-            Retry
-          </button>
-        </div>
+            <span className="text-white text-2xl">⚠</span>
+          </motion.div>
+          <h3 className="text-xl font-bold text-text mb-4">Connection Error</h3>
+          <p className="text-text-muted mb-6">{error}</p>
+          <motion.button 
+            onClick={() => window.location.reload()}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 bg-gradient-primary text-white rounded-xl font-semibold shadow-glow hover:shadow-glow-hover transition-all duration-200"
+          >
+            Try Again
+          </motion.button>
+        </motion.div>
       </div>
     );
   }
@@ -218,8 +257,8 @@ export const HomePage: React.FC = () => {
     <div className="pt-16">
       {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&h=1080&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-hero"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: `url(${heroBackground})` }}></div>
         
         {/* Enhanced Animated Background Elements */}
         <div className="absolute inset-0">
@@ -230,7 +269,7 @@ export const HomePage: React.FC = () => {
               scale: [1, 1.2, 1]
             }}
             transition={{ duration: 6, repeat: Infinity }}
-            className="absolute top-1/4 left-10 w-40 h-40 bg-gradient-to-r from-teal-500/40 to-cyan-500/40 rounded-full blur-2xl"
+            className="absolute top-1/4 left-10 w-40 h-40 bg-primary/40 rounded-full blur-2xl animate-float"
           />
           <motion.div
             animate={{ 
@@ -239,7 +278,7 @@ export const HomePage: React.FC = () => {
               rotate: [0, 180, 360]
             }}
             transition={{ duration: 8, repeat: Infinity, delay: 1 }}
-            className="absolute bottom-1/4 right-10 w-56 h-56 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-10 w-56 h-56 bg-secondary/30 rounded-full blur-3xl"
           />
           <motion.div
             animate={{ 
@@ -247,8 +286,30 @@ export const HomePage: React.FC = () => {
               opacity: [0.1, 0.4, 0.1]
             }}
             transition={{ duration: 10, repeat: Infinity, delay: 2 }}
-            className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl"
+            className="absolute top-1/2 left-1/2 w-72 h-72 bg-accent/20 rounded-full blur-3xl"
           />
+          
+          {/* Floating medical icons */}
+          <motion.div
+            animate={{ 
+              y: [0, -20, 0],
+              rotate: [0, 5, 0]
+            }}
+            transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+            className="absolute top-1/3 right-1/4 opacity-20"
+          >
+            <Heart className="h-16 w-16 text-primary" />
+          </motion.div>
+          <motion.div
+            animate={{ 
+              y: [0, 15, 0],
+              rotate: [0, -5, 0]
+            }}
+            transition={{ duration: 5, repeat: Infinity, delay: 1.5 }}
+            className="absolute bottom-1/3 left-1/4 opacity-20"
+          >
+            <Activity className="h-20 w-20 text-secondary" />
+          </motion.div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -262,7 +323,7 @@ export const HomePage: React.FC = () => {
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-              className="inline-block bg-gradient-to-r from-teal-600 to-cyan-600 px-8 py-3 rounded-full text-sm font-bold mb-8 shadow-2xl"
+              className="inline-block bg-gradient-primary px-8 py-3 rounded-full text-sm font-bold mb-8 shadow-glow animate-pulseGlow"
             >
               🚀 Coming July-August 2025 | Made in Hyderabad, India
             </motion.div>
@@ -274,12 +335,12 @@ export const HomePage: React.FC = () => {
               transition={{ delay: 0.5, duration: 1 }}
             >
               AI-Powered Healthcare
-              <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block mt-4">
+              <span className="bg-gradient-to-r from-primary via-primary-light to-secondary bg-clip-text text-transparent block mt-4">
                 Revolution Starts Here
               </span>
             </motion.h1>
             <motion.p 
-              className="text-xl md:text-2xl text-slate-300 mb-12 max-w-5xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-white/80 mb-12 max-w-5xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 1 }}
@@ -297,19 +358,19 @@ export const HomePage: React.FC = () => {
               className="flex flex-wrap justify-center gap-6 mb-12"
             >
               {[
-                { icon: Brain, text: "AI Diagnostics" },
-                { icon: Bot, text: "Smart Automation" },
-                { icon: Cpu, text: "Predictive Analytics" },
-                { icon: Sparkles, text: "Intelligent Insights" }
+                { icon: Brain, text: "AI Diagnostics", color: "text-primary" },
+                { icon: Bot, text: "Smart Automation", color: "text-secondary" },
+                { icon: Cpu, text: "Predictive Analytics", color: "text-accent" },
+                { icon: Sparkles, text: "Intelligent Insights", color: "text-success" }
               ].map((feature, index) => {
                 const IconComponent = feature.icon;
                 return (
                   <motion.div
                     key={index}
                     whileHover={{ scale: 1.1, y: -5 }}
-                    className="flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+                    className="flex items-center space-x-2 glass-card px-4 py-2 rounded-full hover-lift shimmer-effect group"
                   >
-                    <IconComponent className="h-5 w-5 text-cyan-400" />
+                    <IconComponent className={`h-5 w-5 ${feature.color} group-hover:animate-pulse`} />
                     <span className="text-white font-medium">{feature.text}</span>
                   </motion.div>
                 );
@@ -324,9 +385,9 @@ export const HomePage: React.FC = () => {
             >
               <motion.button
                 onClick={handleJoinPilot}
-                whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(20, 184, 166, 0.5)" }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-6 bg-gradient-to-r from-teal-600 to-teal-500 text-white rounded-2xl font-bold text-lg shadow-2xl transition-all duration-300 flex items-center justify-center space-x-3"
+                className="px-12 py-6 bg-gradient-primary text-white rounded-2xl font-bold text-lg shadow-glow hover:shadow-glow-hover transition-all duration-300 flex items-center justify-center space-x-3 hover-glow shimmer-effect"
               >
                 <span>Join Pilot Program</span>
                 <ArrowRight className="h-6 w-6" />
@@ -337,9 +398,9 @@ export const HomePage: React.FC = () => {
                   e.preventDefault();
                   alert("More info coming soon!");
                 }}
-                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-6 bg-white/10 backdrop-blur-md text-white rounded-2xl font-bold text-lg border border-white/30 transition-all duration-300 flex items-center justify-center space-x-3"
+                className="px-12 py-6 glass-card text-white rounded-2xl font-bold text-lg border border-white/30 transition-all duration-300 flex items-center justify-center space-x-3 hover-lift"
               >
                 <Play className="h-6 w-6" />
                 <span>Watch AI Demo</span>
@@ -350,8 +411,8 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Enhanced Metrics Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-50 to-white"></div>
+      <section className="py-32 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-surface to-surface-variant"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -359,18 +420,26 @@ export const HomePage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl font-bold text-slate-800 mb-6">Building the Future of Healthcare AI</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">Developed in Hyderabad with cutting-edge artificial intelligence technology</p>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="inline-block bg-gradient-primary px-6 py-2 rounded-full text-sm font-semibold mb-8 text-white shadow-glow"
+            >
+              📊 Real-time Development Metrics
+            </motion.div>
+            <h2 className="text-5xl font-bold text-text mb-6">Building the Future of Healthcare AI</h2>
+            <p className="text-xl text-text-muted max-w-4xl mx-auto">Developed in Hyderabad with cutting-edge artificial intelligence technology</p>
           </motion.div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {[
-              { icon: Users, value: metrics.interestedPilotUsers, label: "Pilot Program Members", color: "from-teal-500 to-cyan-500", suffix: "+" },
-              { icon: Brain, value: metrics.aiFeatures, label: "AI Features", color: "from-blue-500 to-indigo-500", suffix: "+" },
-              { icon: Building2, value: metrics.specialties, label: "Healthcare Specialties", color: "from-purple-500 to-pink-500" },
-              { icon: Globe, value: metrics.developmentStartYear, label: "Development Start", color: "from-green-500 to-emerald-500" },
-              { icon: TrendingUp, value: metrics.devProgress, label: "Development Progress", color: "from-orange-500 to-red-500", suffix: "%" },
-              { icon: Award, value: metrics.teamSize, label: "Expert Team", color: "from-yellow-500 to-orange-500", suffix: "+" }
+              { icon: Users, value: metrics.interestedPilotUsers, label: "Pilot Program Members", color: "bg-gradient-to-br from-primary to-secondary", suffix: "+" },
+              { icon: Brain, value: metrics.aiFeatures, label: "AI Features", color: "bg-gradient-to-br from-secondary to-accent", suffix: "+" },
+              { icon: Building2, value: metrics.specialties, label: "Healthcare Specialties", color: "bg-gradient-to-br from-accent to-success" },
+              { icon: Globe, value: metrics.developmentStartYear, label: "Development Start", color: "bg-gradient-to-br from-success to-primary" },
+              { icon: TrendingUp, value: metrics.devProgress, label: "Development Progress", color: "bg-gradient-to-br from-warning to-error", suffix: "%" },
+              { icon: Award, value: metrics.teamSize, label: "Expert Team", color: "bg-gradient-to-br from-primary to-accent", suffix: "+" }
             ].map((metric, index) => {
               const IconComponent = metric.icon;
               return (
@@ -383,14 +452,14 @@ export const HomePage: React.FC = () => {
                   whileHover={{ scale: 1.08, y: -8 }}
                   className="text-center group cursor-pointer"
                 >
-                  <div className={`p-8 bg-gradient-to-br ${metric.color} rounded-3xl shadow-xl group-hover:shadow-2xl transition-all duration-500 mb-6 relative overflow-hidden`}>
+                  <div className={`p-8 ${metric.color} rounded-3xl shadow-card group-hover:shadow-xl transition-all duration-500 mb-6 relative overflow-hidden hover-lift shimmer-effect`}>
                     {/* Background animation */}
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                       className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-3xl"
                     />
-                    <IconComponent className="h-12 w-12 text-white mx-auto mb-6 relative z-10" />
+                    <IconComponent className="h-12 w-12 text-white mx-auto mb-6 relative z-10 group-hover:animate-pulse" />
                     <motion.div 
                       className="text-4xl font-bold text-white mb-3 relative z-10"
                       initial={{ scale: 0 }}
@@ -409,7 +478,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Enhanced AI-Powered Features Section */}
-      <section className="py-32 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden">
+      <section className="py-32 bg-gradient-to-br from-text to-text/90 relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             animate={{ 
@@ -417,7 +486,15 @@ export const HomePage: React.FC = () => {
               scale: [1, 1.1, 1]
             }}
             transition={{ duration: 25, repeat: Infinity }}
-            className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-full blur-3xl"
+            className="absolute top-10 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{ 
+              rotate: -360,
+              scale: [1, 1.3, 1]
+            }}
+            transition={{ duration: 30, repeat: Infinity }}
+            className="absolute bottom-10 left-10 w-80 h-80 bg-secondary/15 rounded-full blur-3xl"
           />
         </div>
         
@@ -432,7 +509,7 @@ export const HomePage: React.FC = () => {
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="inline-block bg-gradient-to-r from-teal-600 to-cyan-600 px-6 py-2 rounded-full text-sm font-semibold mb-6 text-white"
+              className="inline-block bg-gradient-primary px-6 py-2 rounded-full text-sm font-semibold mb-6 text-white shadow-glow animate-pulseGlow"
             >
               🤖 Powered by Advanced AI
             </motion.div>

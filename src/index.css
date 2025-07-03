@@ -2,32 +2,183 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Page transition animations */
+:root {
+  /* Modern Healthcare Color Palette */
+  --primary: 200 100% 45%;           /* Bright cyan */
+  --primary-dark: 200 100% 35%;      /* Darker cyan */
+  --primary-light: 200 100% 85%;     /* Light cyan */
+  --secondary: 220 100% 50%;         /* Vibrant blue */
+  --accent: 280 100% 65%;            /* Purple accent */
+  --success: 145 80% 45%;            /* Medical green */
+  --warning: 35 100% 55%;            /* Alert orange */
+  --error: 0 85% 60%;                /* Error red */
+  
+  /* Neutral Colors */
+  --background: 0 0% 100%;           /* Pure white */
+  --surface: 210 20% 98%;            /* Off white */
+  --surface-variant: 210 15% 95%;    /* Light gray */
+  --text: 210 25% 15%;               /* Dark blue-gray */
+  --text-muted: 210 15% 45%;         /* Medium gray */
+  --text-light: 210 10% 65%;         /* Light gray */
+  --border: 210 15% 90%;             /* Light border */
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  --gradient-card: linear-gradient(145deg, hsl(var(--surface)), hsl(var(--surface-variant)));
+  --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  
+  /* Shadows */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+  --shadow-glow-hover: 0 0 30px hsl(var(--primary) / 0.5);
+  
+  /* Animations */
+  --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Dark mode support */
+.dark {
+  --background: 210 25% 8%;
+  --surface: 210 25% 10%;
+  --surface-variant: 210 25% 12%;
+  --text: 210 20% 95%;
+  --text-muted: 210 15% 70%;
+  --text-light: 210 10% 55%;
+  --border: 210 25% 20%;
+}
+
+/* Enhanced Page transition animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(10px); opacity: 0; }
+  from { transform: translateX(30px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideInLeft {
-  from { transform: translateX(-10px); opacity: 0; }
+  from { transform: translateX(-30px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
 
+@keyframes slideInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Animation Classes */
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .animate-slideInRight {
-  animation: slideInRight 0.3s ease-in-out;
+  animation: slideInRight 0.6s ease-out;
 }
 
 .animate-slideInLeft {
-  animation: slideInLeft 0.3s ease-in-out;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-float {
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Enhanced Card Styles */
+.glass-card {
+  background: var(--gradient-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow-hover);
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.shimmer-effect:hover::before {
+  animation: shimmer 0.8s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--surface));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary-dark));
 }
 
 /* Fix any flickering when transitioning */

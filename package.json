@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@supabase/supabase-js": "^2.39.3",
+    "@types/react-dom": "^19.1.6",
     "axios": "^1.6.7",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.344.0",
