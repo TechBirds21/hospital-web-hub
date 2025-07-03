@@ -119,7 +119,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (!error && data.user) {
-      const { data: profile, error: profileError } = await supabase
+      const { data: _, error: profileError } = await supabase
         .from('users')
         .select('*')
         .eq('auth_user_id', data.user.id)

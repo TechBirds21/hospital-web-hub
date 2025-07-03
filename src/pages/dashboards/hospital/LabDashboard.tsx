@@ -43,9 +43,9 @@ export const LabDashboard: React.FC = () => {
       const updateData = { status, ...additionalData };
       
       if (status === 'collected') {
-        updateData.collected_at = new Date().toISOString();
+        (updateData as any).collected_at = new Date().toISOString();
       } else if (status === 'completed') {
-        updateData.completed_at = new Date().toISOString();
+        (updateData as any).completed_at = new Date().toISOString();
       }
 
       const { error } = await supabase

@@ -33,7 +33,6 @@ export const AdminPage: React.FC = () => {
     conversionRate: 0
   });
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [activeTab, setActiveTab] = useState('dashboard');
 
   useEffect(() => {
     if (isAuthenticated) {

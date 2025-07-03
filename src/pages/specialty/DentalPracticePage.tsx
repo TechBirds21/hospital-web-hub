@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Smile, ArrowRight, CheckCircle, Star, Users, TrendingUp, Brain, Cpu, Bot, Calendar, FileText, Zap, DollarSign, Phone, Mail, Award } from 'lucide-react';
+import { Smile, ArrowRight, CheckCircle, Star, Users, TrendingUp, Brain, Calendar, FileText, DollarSign, Award, Phone } from 'lucide-react';
 
 export const DentalPracticePage: React.FC = () => {
   const navigate = useNavigate();

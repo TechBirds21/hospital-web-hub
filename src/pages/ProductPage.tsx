@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Search, Calendar, BarChart3, Users, Shield, Zap, ArrowRight, CheckCircle, Star, Play, Brain, Cpu, Bot, Sparkles, Building2, Smile, Heart, Award, TrendingUp, Globe, Code, Settings, Lock, Cloud } from 'lucide-react';
+import { Search, Calendar, BarChart3, Users, Shield, Zap, ArrowRight, CheckCircle, Star, Play, Brain, Bot, Sparkles, Building2, Smile, Award, TrendingUp, Globe, Settings, Cloud } from 'lucide-react';
 import { apiService } from '../services/api';
 
 interface Feature {
@@ -34,7 +34,7 @@ export const ProductPage: React.FC = () => {
   const navigate = useNavigate();
   const [features, setFeatures] = useState<Feature[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('overview');
+  
 
   const handleJoinPilot = () => {
     navigate('/contact', { state: { fromBookDemo: true } });

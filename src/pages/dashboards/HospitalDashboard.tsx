@@ -16,7 +16,7 @@ import { AdminDashboard } from './hospital/AdminDashboard';
 
 export const HospitalDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [metrics, setMetrics] = useState({
+  const [metrics] = useState({
     totalPatients: 156,
     todayAppointments: 24,
     bedOccupancy: 78,
@@ -91,7 +91,7 @@ export const HospitalDashboard: React.FC = () => {
             {/* Role-specific Dashboard */}
             <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-5 md:p-6">
               <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-4 md:mb-6">
-                {userProfile?.role.charAt(0).toUpperCase() + userProfile?.role.slice(1)} Dashboard
+                {userProfile?.role ? userProfile.role.charAt(0).toUpperCase() + userProfile.role.slice(1) : 'User'} Dashboard
               </h2>
               {getRoleDashboard()}
             </div>

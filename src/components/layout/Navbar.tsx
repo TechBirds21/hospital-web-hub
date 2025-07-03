@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Heart, ChevronDown } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const Navbar: React.FC = () => {

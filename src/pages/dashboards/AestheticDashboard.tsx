@@ -12,7 +12,7 @@ import { AestheticReceptionDashboard } from './aesthetic/AestheticReceptionDashb
 
 export const AestheticDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [metrics, setMetrics] = useState({
+  const [metrics] = useState({
     todayAppointments: 12,
     activeTreatments: 8,
     consultations: 5,
@@ -81,7 +81,7 @@ export const AestheticDashboard: React.FC = () => {
             {/* Role-specific Dashboard */}
             <div className="bg-white rounded-3xl shadow-xl p-8">
               <h2 className="text-2xl font-bold text-slate-800 mb-6">
-                {userProfile?.role.charAt(0).toUpperCase() + userProfile?.role.slice(1)} Dashboard
+                {userProfile?.role ? userProfile.role.charAt(0).toUpperCase() + userProfile.role.slice(1) : 'User'} Dashboard
               </h2>
               {getRoleDashboard()}
             </div>

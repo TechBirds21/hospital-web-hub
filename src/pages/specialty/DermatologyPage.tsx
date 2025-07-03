@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, ArrowRight, CheckCircle, Star, Users, TrendingUp, Brain, Cpu, Bot, Camera, Zap, BarChart3, Phone, Mail, Award } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle, Star, Users, TrendingUp, Brain, Camera, BarChart3, Award, Phone } from 'lucide-react';
 
 export const DermatologyPage: React.FC = () => {
   const navigate = useNavigate();

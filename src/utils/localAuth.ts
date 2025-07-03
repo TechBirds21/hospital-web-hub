@@ -1,5 +1,5 @@
 // Demo users data for local development
-export const demoUsers = {
+export const demoUsers: Record<string, any> = {
   'admin@demo.com': {
     email: 'admin@demo.com',
     password: 'demo123',
@@ -63,7 +63,7 @@ const verifyToken = (token: string): any => {
 };
 
 export const localSignIn = (email: string, password: string): { user: any; error: any } => {
-  const user = demoUsers[email.toLowerCase()];
+  const user = (demoUsers as Record<string, any>)[email.toLowerCase()];
   
   if (!user || user.password !== password) {
     return { 
@@ -97,7 +97,7 @@ export const getLocalUser = (): any => {
   const token = localStorage.getItem('authToken');
   const email = localStorage.getItem('userEmail');
   
-  if (!token || !email || !demoUsers[email]) {
+  if (!token || !email || !(demoUsers as Record<string, any>)[email]) {
     return null;
   }
   
@@ -106,7 +106,7 @@ export const getLocalUser = (): any => {
     verifyToken(token);
     
     // Return user without password
-    const { password: _, ...userWithoutPassword } = demoUsers[email];
+    const { password: _, ...userWithoutPassword } = (demoUsers as Record<string, any>)[email];
     return userWithoutPassword;
   } catch (error) {
     // Token is invalid or expired

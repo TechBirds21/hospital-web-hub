@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, Controller } from 'react-hook-form';
-import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle, Clock, Users, Award, Globe, Brain, Calendar } from 'lucide-react';
-import { apiService } from '../services/api';
+import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle, Clock, Users, Globe, Brain, Calendar } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 interface ContactForm {

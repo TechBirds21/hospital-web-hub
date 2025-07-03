@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { User, Calendar, FileText, Heart, Bell, Download, Phone } from 'lucide-react';
+import { User, Calendar, FileText, Heart, Bell, Download } from 'lucide-react';
 import { DashboardLayout } from '../../components/dashboard/DashboardLayout';
-import { useAuth } from '../../contexts/AuthContext';
 
 export const PatientPortal: React.FC = () => {
-  const { userProfile } = useAuth();
-  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
-  const [healthRecords, setHealthRecords] = useState([]);
 
   const navigation = [
     { name: 'Dashboard', path: '/patient', icon: Heart, roles: ['patient'] },

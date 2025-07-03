@@ -7,9 +7,9 @@ import { isLocalAuthEnabled } from '../../../utils/localAuth';
 
 export const PharmacyDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [pharmacyItems, setPharmacyItems] = useState([]);
-  const [lowStockItems, setLowStockItems] = useState([]);
-  const [expiringItems, setExpiringItems] = useState([]);
+  const [pharmacyItems, setPharmacyItems] = useState<any[]>([]);
+  const [lowStockItems, setLowStockItems] = useState<any[]>([]);
+  const [expiringItems, setExpiringItems] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -249,7 +249,7 @@ export const PharmacyDashboard: React.FC = () => {
                         </p>
                       </div>
                       <span className="bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        {Math.ceil((new Date(item.expiry_date) - new Date()) / (1000 * 60 * 60 * 24))} days
+                        {Math.ceil((new Date(item.expiry_date).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days
                       </span>
                     </div>
                   ))}

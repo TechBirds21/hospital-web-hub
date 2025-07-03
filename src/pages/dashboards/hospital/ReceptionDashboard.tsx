@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Users, Clock, Plus, Search, Phone, Mail } from 'lucide-react';
+import { Calendar, Users, Clock, Plus, Search, Phone } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../../lib/supabase';
 
 export const ReceptionDashboard: React.FC = () => {
   const { userProfile } = useAuth();
-  const [appointments, setAppointments] = useState([]);
-  const [patients, setPatients] = useState([]);
+  const [appointments, setAppointments] = useState<any[]>([]);
+  const [patients, setPatients] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [showNewAppointment, setShowNewAppointment] = useState(false);
 
   useEffect(() => {
     fetchAppointments();
@@ -142,7 +141,7 @@ export const ReceptionDashboard: React.FC = () => {
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl md:text-2xl font-bold text-slate-800">Reception Dashboard</h3>
           <button
-            onClick={() => setShowNewAppointment(true)}
+            onClick={() => alert('New appointment form coming soon!')}
             className="bg-teal-600 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-teal-700 transition-colors flex items-center space-x-1 sm:space-x-2 text-sm sm:text-base"
           >
             <Plus className="h-5 w-5" />

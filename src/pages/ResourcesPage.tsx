@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, FileText, Video, Book, ExternalLink, Search, Filter, Star } from 'lucide-react';
+import { Download, FileText, Video, Book, ExternalLink, Search, Star } from 'lucide-react';
 import { apiService } from '../services/api';
 
 interface Resource {

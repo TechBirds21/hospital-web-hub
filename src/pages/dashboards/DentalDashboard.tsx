@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Smile, Calendar, Users, TrendingUp, DollarSign, Package } from 'lucide-react';
+import { Smile, Calendar, Users, TrendingUp, Package } from 'lucide-react';
 
 export const DentalDashboard: React.FC = () => {
   return (

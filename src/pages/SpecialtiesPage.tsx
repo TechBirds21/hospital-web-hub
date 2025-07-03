@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Building2, Smile, Sparkles, ArrowRight, Users, TrendingUp, Award, CheckCircle, Star, Brain, Bot, Cpu } from 'lucide-react';
+import { Building2, Smile, Sparkles, ArrowRight, Users, TrendingUp, Star, Brain, Cpu } from 'lucide-react';
 import { apiService } from '../services/api';
 
 interface Specialty {
